@@ -19,3 +19,43 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+#intro {
+  animation: fadeOut 11s forwards;
+}
+
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 5s ease-in-out forwards;
+  animation-delay: 9s;
+}
+
+
+@keyframes fadeIn {
+  0% {
+    scale: 1;
+    color: #ffffff;
+  }
+  90% {
+    color: #ffffff;
+  }
+  100% {
+    scale: 1500;
+    color: #ffffff;
+  }
+}
+
+
