@@ -40,7 +40,7 @@ body {
 
 .animate-fade-in {
   animation: fadeIn 5s ease-in-out forwards;
-  animation-delay: 9s;
+  animation-delay: 10s;
 }
 
 

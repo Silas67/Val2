@@ -4,13 +4,13 @@ import { gsap } from "gsap";
 import { motion } from "framer-motion";
 import TypewriterComponent from "typewriter-effect";
 import { BsHeartFill } from "react-icons/bs";
-import Slider from "@/component/Slider";
 import { Nicknames } from "@/component/index";
 
 export default function Home() {
   const [isIntroVisible, setIsIntroVisible] = useState(true);
   const heartRef = useRef(null);
   const [accepted, setAccepted] = useState(false);
+  const [curr, setCurr] = useState(0);
   const [noPosition, setNoPosition] = useState({ top: "70%", left: "70%" });
 
   const moveNoButton = () => {
@@ -18,6 +18,14 @@ export default function Home() {
     const newY = Math.random() * 80 + "%";
     setNoPosition({ top: newY, left: newX });
   };
+  const next = () => {
+    setCurr((curr) => (curr === Nicknames.length - 1 ? 0 : curr + 1));
+  };
+
+  useEffect(() => {
+    const slideInterval = setInterval(next, 2000);
+    return () => clearInterval(slideInterval);
+  }, []);
 
   useEffect(() => {
     gsap.fromTo(
@@ -61,11 +69,19 @@ export default function Home() {
               }}
             />
             <div className="h-[40px] overflow-hidden ">
-              <Slider autoSlide={true} autoSlideInterval={2000}>
-                {Nicknames.map((item) => (
-                  <div key={item.id}>{item.name}</div>
-                ))}
-              </Slider>
+              <div className="relative">
+                <div>
+                  {Nicknames.map((item) => (
+                    <div
+                      key={item.id}
+                      className="flex flex-col transition-transform ease-in-out duration-1000 text-3xl mb-1"
+                      style={{ transform: `translateY(-${curr * 100}%)` }}
+                    >
+                      {item.name}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 

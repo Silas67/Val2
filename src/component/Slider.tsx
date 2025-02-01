@@ -2,17 +2,18 @@ import React, { ReactNode } from "react";
 import { useState, useEffect } from "react";
 
 interface Props {
-  children: ReactNode[];
+  children: ReactNode;
   autoSlide: boolean;
   autoSlideInterval: number;
 }
 
 const Slider: React.FC<Props> = ({
-  children: Nicknames,
+  children,
   autoSlide,
   autoSlideInterval,
 }) => {
   const [curr, setCurr] = useState(0);
+  const Nicknames = React.Children.toArray(children);
 
   const next = () =>
     setCurr((curr) => (curr === Nicknames.length - 1 ? 0 : curr + 1));
