@@ -5,13 +5,7 @@ import { motion } from "framer-motion";
 import TypewriterComponent from "typewriter-effect";
 import { BsHeartFill } from "react-icons/bs";
 import Slider from "@/component/Slider";
-
-export const Nicknames = [
-  { name: "Mama Drama", id: 1 },
-  { name: "Dora", id: 2 },
-  { name: "Mimi", id: 3 },
-  { name: "Bad Egg", id: 4 },
-];
+import { Nicknames } from "@/component/index";
 
 export default function Home() {
   const [isIntroVisible, setIsIntroVisible] = useState(true);
