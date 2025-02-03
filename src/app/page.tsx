@@ -68,7 +68,12 @@ export default function Home() {
                   .start();
               }}
             />
-            <div className="h-[40px] overflow-hidden ">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}
+              className="h-[40px] overflow-hidden "
+            >
               <div className="relative">
                 <div>
                   {Nicknames.map((item) => (
@@ -82,7 +87,7 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           <div ref={heartRef} className="absolute animate-fade-in">
@@ -92,8 +97,11 @@ export default function Home() {
       )}
 
       <div
-        id="intro"
-        className={`${isIntroVisible ? "opacity-5" : "opacity-100"} `}
+        className={`${
+          isIntroVisible
+            ? "opacity-5"
+            : "opacity-100 transition-all duration-1000 ease-in-out"
+        } `}
       >
         <div className="flex items-center justify-center h-screen bg-pink-200 relative overflow-hidden">
           {/* Floating Hearts Animation */}
@@ -157,8 +165,13 @@ export default function Home() {
             </div>
           ) : (
             <div className="text-center px-4">
-              <h1 className="text-2xl md:text-4xl font-sans font-medium text-red-500">
-                Awwn, See abeg, After all your forming, So you love me? 😂🥰💕
+              <h1 className="text-2xl md:text-4xl font-sans font-bold  text-red-500 ">
+                Awwn🤭, <br />
+                <span className="text-xl font-medium">
+                  Chai, So after all this your forming, <br />
+                  You love me?
+                </span>{" "}
+                😂🥰💕
               </h1>
             </div>
           )}
